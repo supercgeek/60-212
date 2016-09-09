@@ -1,5 +1,7 @@
 function setup() {
   createCanvas(720, 480);
+  background(51);
+  drawLine();
 }
 
 function mouseClicked() {
@@ -9,7 +11,7 @@ function mouseClicked() {
 }
 
 function drawLine() {
-  var numberOfLines = 32;
+  var numberOfLines = 12;
   var lineArray = [];
 
   //Lines Contain X1, Y1, X2, Y2, slope, yIntercept and X & Y Intercept After Added
