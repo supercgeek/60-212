@@ -27,6 +27,9 @@ void drawLine() {
          float xOfIntersection = (lineArray[k - 1].yIntercept - lineArray[n - 1].yIntercept) / (lineArray[n - 1].slope - lineArray[k - 1].slope);
 
          float yOfIntersection = (lineArray[k - 1].slope) * (xOfIntersection) + lineArray[k - 1].yIntercept;
+         
+         
+         
          //println(k + "::" + n);
          //println("LINE 1: " +  lineArray[k-1].X1 + ", " + lineArray[k-1].Y1 + " TO " + lineArray[k-1].X2 + ", " + lineArray[k-1].Y2 + "M: " + lineArray[k-1].slope);
          
