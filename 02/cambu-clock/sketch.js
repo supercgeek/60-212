@@ -20,60 +20,71 @@ function draw() {
    var mils = floor(millis() - millisRolloverTime);
 
    fill(0, 0, 95);
-   H = H - 6;
+   H = 4;
    text("Hour: " + H, 10, 22);
    text("Minute: " + M, 10, 42);
    text("Second: " + S, 10, 62);
    text("Millis: " + mils, 10, 82);
 
    //Call The Rectangle Creation Method
-   rectGen(H);
    stroke(0, 0, 100)
    line(0,125,width,125)
    line(0,210,width,210)
-   // line(x1,y1,x2,y2)
+
+   console.log(H)
+   var squareArray = [];
+
+   //Create a Square For Each Month
+   for (var i = 1; i < H + 1; i++) {
+      console.log("i: " + i);
+      //new object
+      var presentSquare = new createSquare(i); //Sending i into the square constructor passes the current month into createSquare()
+
+     //store object
+
+     squareArray.push(presentSquare);
+   }
+
+
+//Printing Array
+for (var k = 0; k < squareArray.length; k++) {
+    console.log(squareArray[k]);
+    squareWidth = squareArray[k].rectWidth
+    spaceBetweenSquares = 20;
+    jumpByValue = squareWidth + spaceBetweenSquares;
+    squareRegion = jumpByValue * squareArray.length;
+
+    squareArray[k].startX = (width - squareRegion)/2;
+    console.log(squareArray[k].startX);
+
+    if (squareArray[k].length <= 6) {
+      console.log("5");
+      console.log(squareArray[k].length);
+
+      startY = 135;
+
+    } else {
+      if (squareArray[k] <= 6){
+      //Top Row
+      startY = 125;
+      startX = (width - squareRegion)/2;
+    } else {
+      //Second Row
+      startY = 210;
+      startX = (width - squareRegion)/2;
+    }
+  }
+
+    noStroke();
+    rect(startX, startY, squareArray[k].rectWidth, squareArray[k].rectHeight);
+  }
+  noLoop();
 }
 
-// }
-
-// windowWidth & windowHeight are good for getting dimensions of the current window
-// Use width & height for dimensions directly from canvas.
-
-function rectGen(hours) {
-  var squareArray = [];
-  var squareObj = {
-      xBegin: 0,
-      yBegin: 0,
-      rectWidth: 65,
-      rectHeight: 65
-   }
-   var xSpace = {
-      spaceToDistribute: (width - squareObj.rectWidth * hours),
-      spacesBetweenSquares: (hours - 1),
-      spaceVal: 20
-   }
-   xSpace.spaceOnEnds = xSpace.spaceToDistribute - (xSpace.spacesBetweenSquares * xSpace.spaceVal)
-
-   var ySpace = {
-      numOfRows: Math.ceil(hours/6),
-      spaceVal: 20
-   }
-   ySpace.spaceToDistribute = height - squareObj.rectHeight * ySpace.numOfRows,
-   ySpace.spacesBetweenRows = ySpace.numOfRows - 1,
-   ySpace.spaceAboveAndBelow = ySpace.spaceToDistribute - (ySpace.spacesBetweenRows * ySpace.spaceVal)
-
-   noStroke();
-   //Fill The Squares With Gradients
-
-   squaresPrinted = 0;
-   rowsPrinted = 0;
-   squaresToPrint = hours;
-
-   for (var j = 0; j < ySpace.numOfRows; j++) {
-      squareObj.yBegin = (ySpace.spaceAboveAndBelow)/2 + (squareObj.rectHeight) * j + xSpace.spaceVal * j;
-      for (var i = 0; i < hours ; i++) {
-      squareObj.xBegin = (xSpace.spaceOnEnds)/2 + (squareObj.rectHeight) * i + xSpace.spaceVal * i;
-      rect(squareObj.xBegin, squareObj.yBegin, squareObj.rectWidth, squareObj.rectHeight)
-      }
-   }
+function createSquare(currentHourToCreate) {
+  this.rectWidth = 65;
+  this.rectHeight = 65;
+  this.currentHour = currentHourToCreate;
+  // this.xBegin = findXPos(this.currentHour, this.rectWidth, this.rectHeight);
+  // this.yBegin = findYPos(this.currentHour, this.rectWidth, this.rectHeight);
 }
