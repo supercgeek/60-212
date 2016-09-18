@@ -16,10 +16,7 @@ function draw() {
     var H = hour();
     var M = minute();
     var S = second();
-    // H = 23;
-    //var totalHourInMinSecs = M * 60; // this var out of 3600
     var totalInNewUnits = newUnit(M, S);
-    // console.log(totalInNewUnits);
 
     if (H <= 11) {
         clockMode = "AM";
@@ -41,8 +38,6 @@ function draw() {
     //text("Progress: " + totalInNewUnits + "/7225", 10, 120);
 
     var squareArray = [];
-
-    //Create a Square & Push To Array
     for (var i = 0; i < H + 1; i++) {
         var presentSquare = new createSquare(i); //Sending i into the square constructor passes the current month into createSquare()
         squareArray.push(presentSquare);
@@ -52,16 +47,15 @@ function draw() {
     squareArray = squarePlacement(squareArray);
 
     //Draw Squares
-    for (var i = 0; i < H; i++) {
+    for (var i = 0; i < H + 1; i++) {
         setGradient(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight, c2, c1, X_AXIS);
-        // rect(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight);
+        rect(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight);
         pointDraw(squareArray, H, totalInNewUnits);
     }
     // noLoop();
 }
 
 function pointDraw(squareArray, H, totalInNewUnits) {
-    stroke(255, 255, 255);
     startXOfSquare = squareArray[H].startX;
     startYOfSquare = squareArray[H].startY;
     squarePlacer = squarePlacement(squareArray);
@@ -72,12 +66,12 @@ function pointDraw(squareArray, H, totalInNewUnits) {
         for (var x = startXOfSquare; x <= startXOfSquare + 85; x++) {
 
             if (newUnitIncrementor > totalInNewUnits) {
-                //DO NOTHING
                 // console.log("now break");
             } else {
+
+                stroke(200,200,200);
                 point(x, y);
                 newUnitIncrementor = newUnitIncrementor + 1;
-                // console.log("run");
             }
         }
     }
@@ -89,8 +83,6 @@ function newUnit(M, S) {
   return round(totalSecondsSinceStartOfHour);
 }
 function squarePlacement(squareArray) {
-    //console.log("Length of Array: " + squareArray.length);
-    //VALUES USED TO CALCULATE HORIZONTAL PLACEMENT
     squareWidth = squareArray[0].rectWidth; //The Width of Squares
     spaceBetweenSquares = 20; //The Amount of horizontal space between square
     this.jumpByValue = squareWidth + spaceBetweenSquares; //The Amount of space resultant from the sum of a square and the space following a square
@@ -120,9 +112,6 @@ function squarePlacement(squareArray) {
                 numOfRows = Math.ceil(numberOfHours / 6);
                 //console.log("Rows: " + numOfRows);
                 squareRange = (jumpDownValue * numOfRows) - spaceBelowSquares;
-                //console.log("squareRange: "+ squareRange);
-
-                // squareArray[k].startX = 130 + (jumpByValue * k);
                 squareArray[k].startX = (width - squareDomain) / 2 + (jumpByValue * k);
                 squareArray[k].startY = (height - squareRange) / 2; //+ (jumpDownValue * k);
             } else { //7 to 12
