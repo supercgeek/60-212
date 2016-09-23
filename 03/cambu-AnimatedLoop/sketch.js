@@ -11,6 +11,7 @@ function draw() {
    currentFrame = frameCount % 120;
    noStroke();
    renderMyDesign(currentFrame);
+  //  noLoop();
 }
 function renderMyDesign(percent) {
 
