@@ -91,7 +91,7 @@ function gridPrint(newDomain, newRange, spaceValue, theGrid2) {
   }
 }
 
-function randomLine(x1, y1) {
+function randomLine(x1, y1) { //thanks to Golan for helping me 'shape randomness'
   //create an object containing all values
   var randomLineSingle  = {
     x1: x1,
@@ -100,18 +100,16 @@ function randomLine(x1, y1) {
   };
 
   var length = 22;
-  var randomSeed = random(0.05, 0.95);
-  var biasedRandom = ExponentialSmoothedStaircase (randomSeed,0, 5);
+  var seed = random(0.05, 0.95);
+  var biasedRandom = ExponentialSmoothedStaircase (seed,0, 5);
   var angle = (biasedRandom * TWO_PI) + radians(92); //angle in radians
-  // console.log(angle);
   randomLineSingle.x2 = x1 + length * cos(angle);
   randomLineSingle.y2 = y1 + length * sin(angle);
-  // line(randomLineSingle.x1, randomLineSingle.y1, randomLineSingle.x2, randomLineSingle.y2);
   return randomLineSingle;
 
 }
 
-function ExponentialSmoothedStaircase ( x,  a,  n) {
+function ExponentialSmoothedStaircase ( x,  a,  n) {//this math thanks to Golan
    // See http://web.mit.edu/fnl/volume/204/winston.html
 
   var fa = sq (map(a, 0,1, 5,30));
