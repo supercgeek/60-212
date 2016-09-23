@@ -58,7 +58,7 @@ function gridPunch(newDomain, newRange, spaceValue, theGrid1) {
       var noiseVal = noise(x * 0.009,y* 0.009, millis());
       // console.log("first: " + currentLine.status);
       // console.log(frameCount);
-      if (noiseVal >= 0.4) {
+      if (noiseVal >= 0.3) {
         currentLine.status = 1;
       } else {
         currentLine.status = 0;
