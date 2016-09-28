@@ -9,12 +9,12 @@ function setup() {
 function draw() {
 
    currentFrame = frameCount % 120;
+   //console.log("current frame =  " + frameCount + " % 120 = " + currentFrame);
    noStroke();
    renderMyDesign(currentFrame);
   //  noLoop();
 }
 function renderMyDesign(percent) {
-
    var xVal;
    var yVal = height/2;
    var sizeOfCircle = 50;
