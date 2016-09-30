@@ -1,4 +1,4 @@
-// see https://processing.org/reference/libraries/pdf/index.html
+// see https://processing.org/reference/libraries/pdf/index.html //<>// //<>//
 import processing.pdf.*;
 boolean bRecordingPDF;
 int pdfOutputCount = 0; 
@@ -6,118 +6,124 @@ PFont myFont;
 Gridmaker newGrid;
 PGraphics pg;
 int textSize = 40;
- 
+float magicYimpactor;
+float magicXimpactor;
+float amount; 
 void setup() {
   size(612, 792);
   bRecordingPDF = true;
   myFont = createFont("GT-Walsheim-Thin-Trial.otf", textSize);
   textFont(myFont);
-  
+
   newGrid = new Gridmaker();
-  //Make Vectors
   pg = createGraphics(width, height, JAVA2D); // create a PGraphics the same size as the main sketch display window
 }
- 
-void keyPressed() {
-  // When you press a key, it will initiate a PDF export
-  bRecordingPDF = true;
-}
- 
+
+
+
 void draw() {
   if (bRecordingPDF) {
     background(255); // this should come BEFORE beginRecord()
-    beginRecord(PDF, "cambu_" + pdfOutputCount + ".pdf");
+
     //START -- -- -- CAMBU FUNCTIONS
     pg.beginDraw(); // start drawing to the PGraphics
     drawGrid();
     chaosRepresentation();
-    printAllPixels();
-    
+
     pg.endDraw(); // finish drawing to the PGraphics
     //END -- -- -- CAMBU FUNCTIONS
+    image(pg, 0, 0);
+    // -- -- -- function that reads all of pg and places points/ellipses at certain values of a certain brightness
+    beginRecord(PDF, "cambu_" + pdfOutputCount + ".pdf");
+    rasterToNotVector();
     endRecord();
     bRecordingPDF = false;
     pdfOutputCount++;
-    image(pg, 0, 0);
   }
 }
-void printAllPixels() {
-  loadPixels();
-  println(pixels[0]);
+
+void keyPressed() {
+  //rasterToNotVector();
+  magicYimpactor = mouseX*0.0005;
+  magicXimpactor = mouseY*0.0005;
+  //amount = mouseX*0.0005;
+  bRecordingPDF = true;
 }
 
-void drawGrid() {
-  noStroke();
- //squares down
- int i = 0;
- for (int y = 0; y < newGrid.totalHeight; y = y + newGrid.verticalDivisor){
-   if (i % 2 == 0) {fill(140,140,140,80);} else {fill(240,240,240,80);} //if even, else odd
-   i++;
-   
-   //fill(0,0,0);
-   // this function is the background grid rect(0, y, newGrid.totalWidth, newGrid.verticalDivisor);
-   //charsHere(0,y);
-   }
- 
- ////squares across
- int j = 0;
- for (int x = 0; x < newGrid.totalWidth; x = x + newGrid.horizontalDivisor){
-   if (j % 2 == 0) {fill(140,140,140,80);} else {fill(240,240,240,80);} //if even, else odd
-    j++;
-    
-    //fill(0,0,0);
-   // this function is the background grid 
-   //rect(x, 0, newGrid.horizontalDivisor, newGrid.totalHeight);
-   //charsHere(x, 0);
-   }
- }
- 
- void charsHere(int x, int y) {
-   //textAlign(CENTER, CENTER);
-   String a = (x + y)/2 + "";
-   //fill(05, 05, 05, a);  
-   //pg.background(255,255,255);
-   pg.textFont(myFont);
-   pg.textSize(textSize);
-   pg.fill(0,0,0);
-   pg.text(a,x+(newGrid.horizontalDivisor/16),y-(newGrid.verticalDivisor/4)); //<>//
-  
-   //int curCol = get(x+(newGrid.horizontalDivisor/16),y-(newGrid.verticalDivisor/4));
-   //println(curCol);
-   //text(a, random(0, width), random(0, height));//random placement
-   //fill(0,0,0);
-   //text(a,x+(newGrid.horizontalDivisor/16),y-(newGrid.verticalDivisor/4));//
-   
- }
- 
- void chaosRepresentation(){
-  float chaos = 1;
+void chaosRepresentation() {
+  float chaosStart = 1;
   int startX = 0;
   int startY = 0;
-  
-  //embedded for loops 
-  //verticalDivisor, x amount
-  // horizontalDivisor, y amount
-  for (int y = 0; y < newGrid.numberOfRows; y++) {
+
+  int chaosIndex = 0;
+  for (int y = 0; y < newGrid.numberOfRows; y++) { //verticalDivisor, x amount
     startX = 0;
-    for (int x = 0; x < newGrid.numberOfCols; x++) {
-      fill((255/newGrid.numberOfCols)*(y/2),(255/newGrid.numberOfRows)*x,200);
-      //rect(startX,startY,newGrid.horizontalDivisor,newGrid.verticalDivisor); //<>//
-      charsHere(startX,startY);
+    for (int x = 0; x < newGrid.numberOfCols; x++) { // horizontalDivisor, y amount
+      fill((255/newGrid.numberOfCols)*(y/2), (255/newGrid.numberOfRows)*x, 200);
+      //rect(startX,startY,newGrid.horizontalDivisor,newGrid.verticalDivisor); //within the domain & range of this rectangle, transform the pixels on pg 
+      chaosIndex = chaosIndex + 1;
+      float currentChaos = chaosStart * chaosIndex;
+      charsHere(startX, startY, currentChaos);
       startX = startX + newGrid.horizontalDivisor;
-      //fill(0,0,0);
-      
     }
     startY = startY + newGrid.verticalDivisor;
   }
- }
- 
- 
- // pg.beginDraw(); // start drawing to the PGraphics
- // pg.textSize(175); // set the text rendering size (of the PGraphics!) to 175
- // pg.textAlign(CENTER, CENTER); // center the text (of the PGraphics!) horizontally and vertically
- // pg.background(255); // clear the background (of the PGraphics!) with a white color
- // pg.fill(0); // set the text fill color (of the PGraphics!) to black
- // // display the String "TYPE" in the center of the PGraphics
- // pg.text("TYPE", pg.width/2, pg.height/2); 
- // pg.endDraw(); // finish drawing to the PGraphics
+}
+
+void charsHere(int x, int y, float currentChaos) {
+  int a = round((x + y)*.5);
+
+  pg.textFont(myFont);
+  pg.textSize(textSize);
+  pg.fill(0, 0, 0);
+
+  int xDes = x+(newGrid.horizontalDivisor/16);
+  int yDes = y-(newGrid.verticalDivisor/4);
+
+  pg.text(a, xDes, yDes);
+  quadrantDestoryer(xDes, yDes, currentChaos); // operates between (startX, startY, newGrid.horizontalDivisor, newGrid.verticalDivisor)
+}
+
+void quadrantDestoryer(int xToDes, int yToDes, float currentChaos) {
+  float xA = xToDes + 0.6*newGrid.horizontalDivisor - noise(currentChaos, yToDes, xToDes);
+  float yA = yToDes - 0.2*newGrid.verticalDivisor;
+
+  pg.fill(255, 235, 250);
+  //pg.noStroke();
+  //pg.ellipse(xToDes + 0.5*newGrid.horizontalDivisor * noise(currentChaos, yToDes), yToDes - 0.2*newGrid.verticalDivisor, 0.8*currentChaos, 0.3*currentChaos);
+  pg.ellipse(xA, yA, random(0, newGrid.horizontalDivisor)*0.8, noise(0, newGrid.horizontalDivisor)/4);
+  //pg.rect(xA-8, yA, xA+ 30, yA + newGrid.verticalDivisor * 0.5);
+  //pg.ellipse(xToDes, yToDes, currentChaos*noise(xToDes, yToDes), noise(currentChaos+currentChaos));
+}
+
+void rasterToNotVector() {//y down
+  for (int y = 0; y < height; y ++) {
+    for (int x = 0; x < width; x++) { //x across
+      color cp = get(x, y);
+      int b = (int)blue(cp);
+      int g = (int)green(cp); 
+      int r = (int)red(cp);
+      int tolerance = 200;
+      ///-------
+      float noised = 300;
+
+      if (r < tolerance && g < tolerance && b < tolerance) {
+        strokeWeight(3);
+        fill(255, 78, 240);
+        amount = 30;
+        
+        //float xNoised = noise(x / noised, y / noised);
+        float xNoised = noise(magicXimpactor / x * noised, magicXimpactor + y/noised);
+        float yNoised = noise(magicYimpactor / x * noised, magicYimpactor + y / noised);
+
+        xNoised = map(xNoised, 0, 1, -amount, amount); 
+        yNoised = map(yNoised, 0, 1, -amount, amount); 
+
+        //point(xNoised, yNoised);
+        //line(x, y, x + xNoised, y + yNoised);
+
+        ellipse(x + xNoised*10, y + yNoised*10, 5, 5);
+      }
+    }
+  }
+}
