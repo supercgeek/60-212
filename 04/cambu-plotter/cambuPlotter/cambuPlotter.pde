@@ -45,7 +45,7 @@ void draw() {
 void keyPressed() {
   //rasterToNotVector();
   magicYimpactor = mouseX*0.0005;
-  magicXimpactor = mouseY*0.0005;
+  //magicXimpactor = mouseY*0.0005;
   //amount = mouseX*0.0005;
   bRecordingPDF = true;
 }
@@ -91,7 +91,7 @@ void quadrantDestoryer(int xToDes, int yToDes, float currentChaos) {
   pg.fill(255, 235, 250);
   //pg.noStroke();
   //pg.ellipse(xToDes + 0.5*newGrid.horizontalDivisor * noise(currentChaos, yToDes), yToDes - 0.2*newGrid.verticalDivisor, 0.8*currentChaos, 0.3*currentChaos);
-  pg.ellipse(xA, yA, random(0, newGrid.horizontalDivisor)*0.8, noise(0, newGrid.horizontalDivisor)/4);
+    //pg.ellipse(xA, yA, random(0, newGrid.horizontalDivisor)*0.8, noise(50, newGrid.horizontalDivisor)*2);
   //pg.rect(xA-8, yA, xA+ 30, yA + newGrid.verticalDivisor * 0.5);
   //pg.ellipse(xToDes, yToDes, currentChaos*noise(xToDes, yToDes), noise(currentChaos+currentChaos));
 }
@@ -103,26 +103,26 @@ void rasterToNotVector() {//y down
       int b = (int)blue(cp);
       int g = (int)green(cp); 
       int r = (int)red(cp);
-      int tolerance = 200;
+      int tolerance = 150;
       ///-------
       float noised = 300;
 
       if (r < tolerance && g < tolerance && b < tolerance) {
-        strokeWeight(3);
+        strokeWeight(2);
         fill(255, 78, 240);
         amount = 30;
         
-        //float xNoised = noise(x / noised, y / noised);
-        float xNoised = noise(magicXimpactor / x * noised, magicXimpactor + y/noised);
+        float xNoised = noise(x / noised, y / noised);
+        //float xNoised = noise(magicXimpactor / x * noised, magicXimpactor + y/noised);
         float yNoised = noise(magicYimpactor / x * noised, magicYimpactor + y / noised);
 
         xNoised = map(xNoised, 0, 1, -amount, amount); 
-        yNoised = map(yNoised, 0, 1, -amount, amount); 
+        yNoised = map(yNoised, 0, 1, -amount*5, amount*5); 
 
         //point(xNoised, yNoised);
         //line(x, y, x + xNoised, y + yNoised);
 
-        ellipse(x + xNoised*10, y + yNoised*10, 5, 5);
+        ellipse(x + xNoised*10, y + yNoised*2, 5, 5);
       }
     }
   }

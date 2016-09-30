@@ -21,26 +21,11 @@ function draw() {
     var H = hour();
     var M = minute();
     var S = second();
-<<<<<<< HEAD
-    var totalInNewUnits = newUnit(M, S);
-
-    if (H <= 11) {
-        clockMode = "AM";
-
-        c1 = color(224, 182, 72); //,0.72); //72 alpha
-        c2 = color(0, 0, 0, 0.5); //50 alpha
-    } else {
-        clockMode = "PM";
-        H = H - 12;
-        c1 = color(51, 31, 255); //,0.72); //72 alpha
-        c2 = color(0, 0, 0, 0.5); //50 alpha
-=======
     H = 10;
     console.log("Number of Hours: " + H)
 
     if (prevSec != S) {
         millisRolloverTime = millis();
->>>>>>> parent of fe8b3b2... It Works
     }
     prevSec = S;
     var mils = floor(millis() - millisRolloverTime);
@@ -58,13 +43,9 @@ function draw() {
     noStroke();
 
     var squareArray = [];
-<<<<<<< HEAD
-    for (var i = 0; i < H + 1; i++) {
-=======
 
     //Create a Square & Push To Array
     for (var i = 0; i < H; i++) {
->>>>>>> parent of fe8b3b2... It Works
         var presentSquare = new createSquare(i); //Sending i into the square constructor passes the current month into createSquare()
         squareArray.push(presentSquare);
     }
@@ -79,58 +60,19 @@ function draw() {
 
 
     //Draw Squares
-<<<<<<< HEAD
-    for (var i = 0; i < H + 1; i++) {
-        setGradient(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight, c2, c1, X_AXIS);
-        rect(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight);
-        pointDraw(squareArray, H, totalInNewUnits);
-=======
     for (var i = 0; i < H; i++) {
         rect(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight);
         //          x   y    w    h   c2  c1   axis
         setGradient(squareArray[i].startX, squareArray[i].startY, squareArray[i].rectWidth, squareArray[i].rectHeight, c2, c1, X_AXIS);
->>>>>>> parent of fe8b3b2... It Works
     }
 
-<<<<<<< HEAD
-function pointDraw(squareArray, H, totalInNewUnits) {
-    startXOfSquare = squareArray[H].startX;
-    startYOfSquare = squareArray[H].startY;
-    squarePlacer = squarePlacement(squareArray);
-    jumpValue = 85 + 20; //squarePlacer.jumpByValue;
-    newUnitIncrementor = 0;
-
-    for (var y = startYOfSquare-1; y <= startYOfSquare + 85; y++) {
-        for (var x = startXOfSquare; x <= startXOfSquare + 85; x++) {
-
-            if (newUnitIncrementor > totalInNewUnits) {
-                // console.log("now break");
-            } else {
-
-                stroke(200,200,200);
-                point(x, y);
-                newUnitIncrementor = newUnitIncrementor + 1;
-            }
-        }
-    }
-}
-function newUnit(M, S) {
-  // console.log(M + " " +  S);
-  var totalSecondsSinceStartOfHour = M * 60 + S;
-  totalSecondsSinceStartOfHour = map(totalSecondsSinceStartOfHour, 0, 3600, 0, 7225);
-  return round(totalSecondsSinceStartOfHour);
-=======
     console.log("Things in the Array: " + squareArray.length);
     noLoop();
->>>>>>> parent of fe8b3b2... It Works
 }
 
 function squarePlacement(squareArray) {
-<<<<<<< HEAD
-=======
     console.log("Length of Array: " + squareArray.length);
     //VALUES USED TO CALCULATE HORIZONTAL PLACEMENT
->>>>>>> parent of fe8b3b2... It Works
     squareWidth = squareArray[0].rectWidth; //The Width of Squares
     spaceBetweenSquares = 20; //The Amount of horizontal space between square
     jumpByValue = squareWidth + spaceBetweenSquares; //The Amount of space resultant from the sum of a square and the space following a square
@@ -160,12 +102,9 @@ function squarePlacement(squareArray) {
                 numOfRows = Math.ceil(numberOfHours/6),
                 console.log("Rows: " + numOfRows);
                 squareRange = (jumpDownValue * numOfRows) - spaceBelowSquares;
-<<<<<<< HEAD
-=======
                 console.log("squareRange: "+ squareRange);
 
                 // squareArray[k].startX = 130 + (jumpByValue * k);
->>>>>>> parent of fe8b3b2... It Works
                 squareArray[k].startX = (width - squareDomain) / 2 + (jumpByValue * k);
                 squareArray[k].startY = (height - squareRange) / 2 //+ (jumpDownValue * k);
             } else { //7 to 12
