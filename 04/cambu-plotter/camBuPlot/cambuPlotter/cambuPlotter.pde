@@ -61,7 +61,7 @@ void chaosRepresentation() {
     startX = 0;
     for (int x = 0; x < newGrid.numberOfCols; x++) { // horizontalDivisor, y amount
       fill((255/newGrid.numberOfCols)*(y/2), (255/newGrid.numberOfRows)*x, 200);
-      //rect(startX,startY,newGrid.horizontalDivisor,newGrid.verticalDivisor); //within the domain & range of this rectangle, transform the pixels on pg 
+      rect(startX,startY,newGrid.horizontalDivisor,newGrid.verticalDivisor); //within the domain & range of this rectangle, transform the pixels on pg 
       chaosIndex = chaosIndex + 1;
       currentChaos = chaosStart * chaosIndex;
       charsHere(startX, startY, currentChaos);
@@ -105,24 +105,24 @@ void rasterToNotVector() {//y down
       int g = (int)green(cp); 
       int r = (int)red(cp);
       int tolerance = 150;
-      
+
       float noised = 30;
 
       if (r < tolerance && g < tolerance && b < tolerance) { 
-      
+
         float amount = 30;
 
         float nx = noise(x/noised, y/noised); 
-      float ny = noise(magicYimpactor + x/noised, magicYimpactor + y/noised); 
+        float ny = noise(magicYimpactor + x/noised, magicYimpactor + y/noised); 
 
         nx = map(nx, 0, 1, -amount, amount); //cc to Golan for explaining distortion fields.
-        
+
         ny = map(ny, 0, 1, -amount, amount*magicYimpactor); 
 
         //line(x, y, x+nx, y+ny);
-          strokeWeight(2);
+        strokeWeight(2);
         fill(34, 78, 240);
-        ellipse(x + nx*0.5,y + ny/2,4,3);
+        ellipse(x + nx*0.5, y + ny/2, 4, 3);
       }
     }
   }
@@ -153,8 +153,8 @@ void drawGrid() {
 class Gridmaker {
   int totalHeight = height;
   int totalWidth = width;
-  int numberOfRows = 12;
-  int numberOfCols = 54;
+  int numberOfRows = 13;
+  int numberOfCols = 7;
   int verticalDivisor = round(totalHeight/numberOfRows);
   int horizontalDivisor = totalWidth/numberOfCols;
 }
