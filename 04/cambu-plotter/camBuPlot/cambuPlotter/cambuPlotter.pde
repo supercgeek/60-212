@@ -44,7 +44,7 @@ void draw() {
 void keyPressed() {
   //rasterToNotVector();
   //magicYimpactor = mouseX*0.0005;
-  magicYimpactor = mouseX*0.05;
+  magicYimpactor = mouseX*0.0005;
   //magicXXX = mouseX;
   //magicXimpactor = mouseY*0.0005;
   //amount = mouseX*0.0005;
@@ -61,7 +61,7 @@ void chaosRepresentation() {
     startX = 0;
     for (int x = 0; x < newGrid.numberOfCols; x++) { // horizontalDivisor, y amount
       fill((255/newGrid.numberOfCols)*(y/2), (255/newGrid.numberOfRows)*x, 200);
-      rect(startX,startY,newGrid.horizontalDivisor,newGrid.verticalDivisor); //within the domain & range of this rectangle, transform the pixels on pg 
+      //rect(startX,startY,newGrid.horizontalDivisor,newGrid.verticalDivisor); //within the domain & range of this rectangle, transform the pixels on pg 
       chaosIndex = chaosIndex + 1;
       currentChaos = chaosStart * chaosIndex;
       charsHere(startX, startY, currentChaos);
@@ -91,7 +91,7 @@ void quadrantDestoryer(int xToDes, int yToDes, float currentChaos) {
 
   pg.fill(255, 235, 250);
   //pg.noStroke();
-  //pg.ellipse(xToDes + 0.5*newGrid.horizontalDivisor * noise(currentChaos, yToDes), yToDes - 0.2*newGrid.verticalDivisor, noise(currentChaos, yToDes)*0.5*currentChaos, 0.05*currentChaos);
+  pg.ellipse(xToDes + 0.5*newGrid.horizontalDivisor * noise(currentChaos, yToDes), yToDes - 0.2*newGrid.verticalDivisor, noise(currentChaos, yToDes)*0.5*currentChaos, 0.05*currentChaos);
   //pg.ellipse(xA, yA, random(0, newGrid.horizontalDivisor)*0.8, noise(50, newGrid.horizontalDivisor)*2);
   //pg.rect(xA-8, yA, xA+ 30, yA + newGrid.verticalDivisor * 0.5);
   //pg.ellipse(xToDes, yToDes, currentChaos*noise(xToDes, yToDes), noise(currentChaos+currentChaos));
@@ -111,18 +111,17 @@ void rasterToNotVector() {//y down
       if (r < tolerance && g < tolerance && b < tolerance) { 
 
         float amount = 30;
-
+        float chiller = 0.05;
         float nx = noise(x/noised, y/noised); 
-        float ny = noise(magicYimpactor + x/noised, magicYimpactor + y/noised); 
+        float ny = noise(magicYimpactor + x/noised, magicYimpactor*magicYimpactor + y*y); 
 
-        nx = map(nx, 0, 1, -amount, amount); //cc to Golan for explaining distortion fields.
-
-        ny = map(ny, 0, 1, -amount, amount*magicYimpactor); 
+        nx = map(nx, 0, 1, -amount+ x*chiller, amount); //cc to Golan for explaining distortion fields.
+        ny = map(ny, 0, 1, -amount + y*chiller, amount*magicYimpactor); 
 
         //line(x, y, x+nx, y+ny);
-        strokeWeight(2);
+        strokeWeight(7);
         fill(34, 78, 240);
-        ellipse(x + nx*0.5, y + ny/2, 4, 3);
+        ellipse(x + nx*0.5, y + ny/2, y*0.1, x*0.3);
       }
     }
   }
@@ -153,7 +152,7 @@ void drawGrid() {
 class Gridmaker {
   int totalHeight = height;
   int totalWidth = width;
-  int numberOfRows = 13;
+  int numberOfRows = 14;
   int numberOfCols = 7;
   int verticalDivisor = round(totalHeight/numberOfRows);
   int horizontalDivisor = totalWidth/numberOfCols;
