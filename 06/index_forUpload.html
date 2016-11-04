@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>A Simple Map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'/>
+
+<style>
+  body { margin:0; padding:0; }
+  #map { position:relative; float:left; top:0; bottom:0; width:504px; height:504px }
+  #street {display: inline; width: 504px; height: 504px }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<script>
+
+//Load JSON File
+var locations = [] // all data
+
+window.onload = function rdy() {
+    newMapImage(34.1187624,-118.2751063,12,640,640)
+    newStreetImage(34.1187624,-118.2751063,640,640, 90, 235, 10)
+  }
+
+var i = 0;
+function again(jumpVal, newHeading) {
+    var longitude = locations[i][0];
+    var latitude = locations[i][1];
+    var zoom = 12 //locations[0][2]
+    var width = 640;
+    var height = 640;
+    var fov = 90;
+    var S = null;
+    var pitch = 10;
+
+    if (newHeading == null) {
+        var heading = 235;
+    } else {
+        var heading = newHeading;
+    }
+
+    if (S == null) {
+      newMapImage(longitude,latitude,zoom, width, height, 0);
+      newStreetImage(longitude,latitude, width, height, fov, heading, pitch, 0);
+    } else {
+      newMapImage(longitude,latitude,zoom, width, height, 1);
+      newStreetImage(longitude,latitude, width, height, fov, heading, pitch, 1);
+    }
+
+
+
+    console.log(longitude + " " + latitude)
+    console.log(i + " / " + locations.length)
+    //setTimeout(function(){alert(i)}, 500);
+    // newMapImage(longitude,latitude,zoom, width, height, save);
+    // newStreetImage(longitude,latitude, width, height, fov, heading, pitch, save);
+    i = i + jumpVal;
+
+
+}
+
+function newMapImage(long, lat, zoom, width, height, save) { // map image
+  var linkMap = "https://api.mapbox.com/styles/v1/mapbox/streets-v9/static/" + lat + "," + long + "," + zoom + "/" + width + "x" + height + "?access_token=pk.eyJ1Ijoic3VwZXJjZ2VlayIsImEiOiJjaWZxMzV6NnFhb3pjaXVseDQ1dm84Z2RkIn0.T5qZqiB_JanRezs012Zppw";
+  document.getElementById('myMap_image').src = linkMap;
+  document.getElementById('myMap_link').href = linkMap;
+  // document.getElementById('myMap_link').download = 1
+  if (save == 1){document.getElementById('myStreetView_link').click();}
+}
+
+function newStreetImage(long, lat, width, height, fov, heading, pitch, save) { // street image
+    var link = "https://maps.googleapis.com/maps/api/streetview?size=" + width + "x" + height + "&location=" + long + "," + lat + "&fov=" + fov + "&heading=" + heading + "&pitch=" + pitch + "&key=AIzaSyAAhrTirgQBQJH88rpw6LpOfp3oMRTMzqg";
+    document.getElementById('myStreetView_image').src = link;
+    document.getElementById('myStreetView_link').href = link;
+    // document.getElementById('plugBoi2').download = 1
+    if (save == 1){document.getElementById('myStreetView_link').click();}
+}
+
+</script>
+<!-- map iamge print -->
+<a id="myMap_link" href="="..." download>map</a>
+<img id="myMap_image" src="...">
+
+<!-- street image print -->
+
+<a id="myStreetView_link" href="..." download>street</a>
+<img id="myStreetView_image" src="...">
+
+
+
+</body>
+</html>
