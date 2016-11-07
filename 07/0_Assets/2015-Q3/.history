@@ -1,0 +1,269 @@
+PVALUE	2798	0.05
+MISSING	2798	0.8
+PLOT	2798	EIKOSOGRAM
++PAIR	3848 Trip id:Trip id	Trip id:Trip id
++PAIR	3848 Bikeid:Bikeid	Trip id:Trip id
++PAIR	3848 Tripduration:Tripduration	Trip id:Trip id
++PAIR	3848 From station id:From station id	Trip id:Trip id
++PAIR	3848 From station name:From station name	Trip id:Trip id
++PAIR	3857 Trip id:Trip id	Bikeid:Bikeid
++PAIR	3858 Bikeid:Bikeid	Bikeid:Bikeid
++PAIR	3858 Tripduration:Tripduration	Bikeid:Bikeid
++PAIR	3858 From station id:From station id	Bikeid:Bikeid
++PAIR	3858 From station name:From station name	Bikeid:Bikeid
++PAIR	3859 Trip id:Trip id	Tripduration:Tripduration
++PAIR	3859 Bikeid:Bikeid	Tripduration:Tripduration
++PAIR	3859 Tripduration:Tripduration	Tripduration:Tripduration
++PAIR	3859 From station id:From station id	Tripduration:Tripduration
++PAIR	3859 From station name:From station name	Tripduration:Tripduration
++PAIR	15183 To station id:To station id	Trip id:Trip id
++PAIR	15183 To station id:To station id	Bikeid:Bikeid
++PAIR	15184 To station id:To station id	Tripduration:Tripduration
++PAIR	16158 To station name:To station name	Trip id:Trip id
++PAIR	16158 To station name:To station name	Bikeid:Bikeid
++PAIR	16158 To station name:To station name	Tripduration:Tripduration
++PAIR	16191 Usertype:Usertype	Trip id:Trip id
++PAIR	16191 Usertype:Usertype	Bikeid:Bikeid
++PAIR	16191 Usertype:Usertype	Tripduration:Tripduration
+-PAIR	17477 Trip id:Trip id	Trip id:Trip id
+-PAIR	17477 Trip id:Trip id	Bikeid:Bikeid
+-PAIR	17478 Trip id:Trip id	Tripduration:Tripduration
+-PAIR	18257 Bikeid:Bikeid	Trip id:Trip id
+-PAIR	18258 Bikeid:Bikeid	Bikeid:Bikeid
+-PAIR	18258 Bikeid:Bikeid	Tripduration:Tripduration
+-PAIR	18423 Tripduration:Tripduration	Trip id:Trip id
+-PAIR	18423 Tripduration:Tripduration	Bikeid:Bikeid
+-PAIR	18424 Tripduration:Tripduration	Tripduration:Tripduration
+PLOT	21342	HISTOGRAM
+PLOT	22078	EIKOSOGRAM
+PLOT	22377	SCATTER
+MISSING	29442	0.6
+MISSING	29859	0.2
++PAIR	31776 Tripduration:Tripduration	Trip id:Trip id
++PAIR	31776 Tripduration:Tripduration	Bikeid:Bikeid
++PAIR	31776 Tripduration:Tripduration	Tripduration:Tripduration
++PAIR	31825 Bikeid:Bikeid	Trip id:Trip id
++PAIR	31825 Bikeid:Bikeid	Bikeid:Bikeid
++PAIR	31825 Bikeid:Bikeid	Tripduration:Tripduration
+-PAIR	33897 Usertype:Usertype	Trip id:Trip id
+-PAIR	33898 Usertype:Usertype	Bikeid:Bikeid
+-PAIR	33898 Usertype:Usertype	Tripduration:Tripduration
+-PAIR	34142 To station name:To station name	Trip id:Trip id
+-PAIR	34142 To station name:To station name	Bikeid:Bikeid
+-PAIR	34142 To station name:To station name	Tripduration:Tripduration
++RANGE	34709 Trip id:Trip id	11714909,14287386
+~RANGE	34730 Trip id:Trip id	11714909,14222843
+~RANGE	34749 Trip id:Trip id	11714909,13900131
+~RANGE	34876 Trip id:Trip id	11714909,12710706
+~RANGE	36053 Trip id:Trip id	11714909,13558978
++PAIR	41925 To station name:To station name	Trip id:Trip id
++PAIR	41926 To station name:To station name	Bikeid:Bikeid
++PAIR	41926 To station name:To station name	Tripduration:Tripduration
++PAIR	42193 Trip id:Trip id	Trip id:Trip id
++PAIR	42193 Trip id:Trip id	Bikeid:Bikeid
++PAIR	42193 Trip id:Trip id	Tripduration:Tripduration
+-PAIR	44259 To station name:To station name	Trip id:Trip id
+-PAIR	44259 To station name:To station name	Bikeid:Bikeid
+-PAIR	44259 To station name:To station name	Tripduration:Tripduration
+-PAIR	44359 To station id:To station id	Trip id:Trip id
+-PAIR	44359 To station id:To station id	Bikeid:Bikeid
+-PAIR	44359 To station id:To station id	Tripduration:Tripduration
+PLOT	50344	EIKOSOGRAM
+SELECT	52462	Trip id:Trip id	Trip id:Trip id
+SELECT	52662	NONE
+SELECT	54144	Trip id:Trip id	Trip id:Trip id
+~RANGE	56427 Trip id:Trip id	11714909,13645035
+~RANGE	56443 Trip id:Trip id	11714909,13874519
+~RANGE	56501 Trip id:Trip id	11714909,13888861
+~RANGE	56514 Trip id:Trip id	11714909,14075317
+~RANGE	56561 Trip id:Trip id	11714909,14089660
+~RANGE	56611 Trip id:Trip id	11714909,14104003
+~RANGE	56644 Trip id:Trip id	11714909,14118346
+~RANGE	58230 Trip id:Trip id	11714909,14089661
+~RANGE	58246 Trip id:Trip id	11714909,13974919
+~RANGE	58262 Trip id:Trip id	11714909,13903205
+~RANGE	58278 Trip id:Trip id	11714909,13774120
+~RANGE	58295 Trip id:Trip id	11714909,13759777
+~RANGE	58310 Trip id:Trip id	11714909,13745435
+~RANGE	58327 Trip id:Trip id	11714909,13731092
+~RANGE	58578 Trip id:Trip id	11714909,13759777
+~RANGE	58594 Trip id:Trip id	11714909,13774120
+~RANGE	58612 Trip id:Trip id	11714909,13817148
+~RANGE	58627 Trip id:Trip id	11714909,13888862
+~RANGE	58644 Trip id:Trip id	11714909,13931890
+~RANGE	58661 Trip id:Trip id	11714909,13974919
+~RANGE	58677 Trip id:Trip id	11714909,14118346
+~RANGE	58694 Trip id:Trip id	11714909,14261774
+-RANGE	58711 Trip id:Trip id	11714909,14261774
+PLOT	61578	HISTOGRAM
+PLOT	62380	SCATTER
++PAIR	67911 To station id:To station id	Trip id:Trip id
+-PAIR	67911 Bikeid:Bikeid	Trip id:Trip id
++PAIR	67911 To station id:To station id	Bikeid:Bikeid
+-PAIR	67912 Bikeid:Bikeid	Bikeid:Bikeid
++PAIR	67912 To station id:To station id	Tripduration:Tripduration
+-PAIR	67912 Bikeid:Bikeid	Tripduration:Tripduration
++PAIR	68761 To station name:To station name	Trip id:Trip id
+-PAIR	68761 Tripduration:Tripduration	Trip id:Trip id
++PAIR	68761 To station name:To station name	Bikeid:Bikeid
+-PAIR	68762 Tripduration:Tripduration	Bikeid:Bikeid
++PAIR	68762 To station name:To station name	Tripduration:Tripduration
+-PAIR	68762 Tripduration:Tripduration	Tripduration:Tripduration
++PAIR	70261 Usertype:Usertype	Trip id:Trip id
+-PAIR	70261 From station id:From station id	Trip id:Trip id
++PAIR	70261 Usertype:Usertype	Bikeid:Bikeid
+-PAIR	70261 From station id:From station id	Bikeid:Bikeid
++PAIR	70261 Usertype:Usertype	Tripduration:Tripduration
+-PAIR	70261 From station id:From station id	Tripduration:Tripduration
+-PAIR	71229 From station name:From station name	Trip id:Trip id
+-PAIR	71229 From station name:From station name	Bikeid:Bikeid
+-PAIR	71229 From station name:From station name	Tripduration:Tripduration
+SORT	75032	Trip id:Trip id
++PROFILE	78062
+-PROFILE	89000
++PAIR	92781 Trip id:Trip id	From station id:From station id
++PAIR	92781 To station id:To station id	From station id:From station id
++PAIR	92781 To station name:To station name	From station id:From station id
++PAIR	92781 Usertype:Usertype	From station id:From station id
+-PAIR	94780 Trip id:Trip id	Bikeid:Bikeid
+-PAIR	94780 To station id:To station id	Bikeid:Bikeid
+-PAIR	94780 Usertype:Usertype	Bikeid:Bikeid
+-PAIR	94781 To station name:To station name	Bikeid:Bikeid
+SELECT	95464	Trip id:Trip id	Tripduration:Tripduration
++PAIR	97064 Trip id:Trip id	From station name:From station name
++PAIR	97064 To station id:To station id	From station name:From station name
++PAIR	97064 To station name:To station name	From station name:From station name
++PAIR	97064 Usertype:Usertype	From station name:From station name
++PAIR	97214 Trip id:Trip id	To station id:To station id
++PAIR	97214 To station id:To station id	To station id:To station id
++PAIR	97214 To station name:To station name	To station id:To station id
++PAIR	97214 Usertype:Usertype	To station id:To station id
++PAIR	98659 Trip id:Trip id	Bikeid:Bikeid
++PAIR	98659 To station id:To station id	Bikeid:Bikeid
++PAIR	98659 To station name:To station name	Bikeid:Bikeid
++PAIR	98660 Usertype:Usertype	Bikeid:Bikeid
+-PAIR	99122 Trip id:Trip id	Trip id:Trip id
+-PAIR	99122 To station id:To station id	Trip id:Trip id
+-PAIR	99122 Usertype:Usertype	Trip id:Trip id
+-PAIR	99122 To station name:To station name	Trip id:Trip id
++PAIR	99138 Trip id:Trip id	To station name:To station name
++PAIR	99139 To station id:To station id	To station name:To station name
++PAIR	99139 To station name:To station name	To station name:To station name
++PAIR	99139 Usertype:Usertype	To station name:To station name
+-PAIR	99220 Trip id:Trip id	Bikeid:Bikeid
+-PAIR	99220 To station id:To station id	Bikeid:Bikeid
+-PAIR	99220 Usertype:Usertype	Bikeid:Bikeid
+-PAIR	99220 To station name:To station name	Bikeid:Bikeid
++PAIR	99237 Trip id:Trip id	Usertype:Usertype
++PAIR	99237 To station id:To station id	Usertype:Usertype
++PAIR	99237 To station name:To station name	Usertype:Usertype
++PAIR	99237 Usertype:Usertype	Usertype:Usertype
+-PAIR	101136 Trip id:Trip id	Tripduration:Tripduration
+-PAIR	101136 To station id:To station id	Tripduration:Tripduration
+-PAIR	101136 Usertype:Usertype	Tripduration:Tripduration
+-PAIR	101136 To station name:To station name	Tripduration:Tripduration
++PAIR	101497 Trip id:Trip id	Tripduration:Tripduration
++PAIR	101497 To station id:To station id	Tripduration:Tripduration
++PAIR	101497 To station name:To station name	Tripduration:Tripduration
++PAIR	101497 Usertype:Usertype	Tripduration:Tripduration
+-PAIR	103198 Trip id:Trip id	Usertype:Usertype
+-PAIR	103198 To station id:To station id	Usertype:Usertype
+-PAIR	103198 Usertype:Usertype	Usertype:Usertype
+-PAIR	103198 To station name:To station name	Usertype:Usertype
+-PAIR	104431 Trip id:Trip id	Tripduration:Tripduration
+-PAIR	104431 To station id:To station id	Tripduration:Tripduration
+-PAIR	104431 Usertype:Usertype	Tripduration:Tripduration
+-PAIR	104431 To station name:To station name	Tripduration:Tripduration
++PAIR	105464 Trip id:Trip id	Usertype:Usertype
++PAIR	105464 To station id:To station id	Usertype:Usertype
++PAIR	105464 To station name:To station name	Usertype:Usertype
++PAIR	105464 Usertype:Usertype	Usertype:Usertype
+-PAIR	107448 Trip id:Trip id	From station id:From station id
+-PAIR	107448 To station id:To station id	From station id:From station id
+-PAIR	107448 Usertype:Usertype	From station id:From station id
+-PAIR	107449 To station name:To station name	From station id:From station id
+-PAIR	108382 Trip id:Trip id	From station name:From station name
+-PAIR	108382 To station id:To station id	From station name:From station name
+-PAIR	108382 Usertype:Usertype	From station name:From station name
+-PAIR	108382 To station name:To station name	From station name:From station name
++PAIR	112381 Trip id:Trip id	From station name:From station name
++PAIR	112381 To station id:To station id	From station name:From station name
++PAIR	112381 To station name:To station name	From station name:From station name
++PAIR	112381 Usertype:Usertype	From station name:From station name
++PAIR	116798 Trip id:Trip id	From station id:From station id
++PAIR	116798 To station id:To station id	From station id:From station id
++PAIR	116798 To station name:To station name	From station id:From station id
++PAIR	116798 Usertype:Usertype	From station id:From station id
+-PAIR	118782 Trip id:Trip id	Usertype:Usertype
+-PAIR	118783 To station id:To station id	Usertype:Usertype
+-PAIR	118783 Usertype:Usertype	Usertype:Usertype
+-PAIR	118783 To station name:To station name	Usertype:Usertype
+-PAIR	119399 Trip id:Trip id	To station name:To station name
+-PAIR	119399 To station id:To station id	To station name:To station name
+-PAIR	119399 Usertype:Usertype	To station name:To station name
+-PAIR	119400 To station name:To station name	To station name:To station name
++PAIR	128566 Trip id:Trip id	To station name:To station name
++PAIR	128566 To station id:To station id	To station name:To station name
++PAIR	128566 To station name:To station name	To station name:To station name
++PAIR	128566 Usertype:Usertype	To station name:To station name
+-PAIR	131500 Trip id:Trip id	From station id:From station id
+-PAIR	131500 To station id:To station id	From station id:From station id
+-PAIR	131501 Usertype:Usertype	From station id:From station id
+-PAIR	131501 To station name:To station name	From station id:From station id
+-PAIR	131817 Trip id:Trip id	From station name:From station name
+-PAIR	131817 Trip id:Trip id	To station id:To station id
+-PAIR	131817 Trip id:Trip id	To station name:To station name
+-PAIR	132734 To station id:To station id	From station name:From station name
+-PAIR	132735 To station id:To station id	To station id:To station id
+-PAIR	132735 To station id:To station id	To station name:To station name
+-PAIR	134400 Usertype:Usertype	From station name:From station name
+-PAIR	134400 Usertype:Usertype	To station id:To station id
+-PAIR	134401 Usertype:Usertype	To station name:To station name
++PAIR	139017 To station name:To station name	Usertype:Usertype
++PAIR	140550 To station name:To station name	From station id:From station id
+-PAIR	141018 To station name:To station name	To station id:To station id
+-PAIR	142534 To station name:To station name	To station name:To station name
+-PAIR	145151 To station name:To station name	Usertype:Usertype
++PAIR	145301 To station name:To station name	Tripduration:Tripduration
+-PAIR	147185 To station name:To station name	From station id:From station id
++PAIR	153241 From station name:From station name	Tripduration:Tripduration
++PAIR	153241 To station name:To station name	From station id:From station id
++PAIR	153241 From station name:From station name	From station id:From station id
++PAIR	153241 From station name:From station name	From station name:From station name
++PAIR	153241 To station name:To station name	To station id:To station id
++PAIR	153241 From station name:From station name	To station id:To station id
++PAIR	153241 To station name:To station name	To station name:To station name
++PAIR	153241 From station name:From station name	To station name:To station name
++PAIR	153241 To station name:To station name	Usertype:Usertype
++PAIR	153241 From station name:From station name	Usertype:Usertype
+-PAIR	153852 From station name:From station name	Usertype:Usertype
+-PAIR	153852 To station name:To station name	Usertype:Usertype
+-PAIR	155252 From station name:From station name	From station id:From station id
+-PAIR	155252 To station name:To station name	From station id:From station id
+-PAIR	155252 From station name:From station name	To station id:To station id
+-PAIR	155252 To station name:To station name	To station id:To station id
+-PAIR	155252 From station name:From station name	To station name:To station name
+-PAIR	155252 To station name:To station name	To station name:To station name
++PAIR	157370 To station name:To station name	From station id:From station id
++PAIR	157370 From station name:From station name	From station id:From station id
++PAIR	157370 To station name:To station name	To station id:To station id
++PAIR	157370 From station name:From station name	To station id:To station id
++PAIR	157370 To station name:To station name	To station name:To station name
++PAIR	157370 From station name:From station name	To station name:To station name
+SELECT	157687	To station name:To station name	From station name:From station name
+-PAIR	159386 From station name:From station name	From station id:From station id
+-PAIR	159386 To station name:To station name	From station id:From station id
+-PAIR	159386 From station name:From station name	To station id:To station id
+-PAIR	159386 To station name:To station name	To station id:To station id
+-PAIR	159386 From station name:From station name	To station name:To station name
+-PAIR	159386 To station name:To station name	To station name:To station name
+SELECT	162271	NONE
+SELECT	162454	To station name:To station name	From station name:From station name
+-PAIR	166069 From station name:From station name	Tripduration:Tripduration
++PAIR	166069 To station name:To station name	From station id:From station id
++PAIR	166069 To station name:To station name	To station id:To station id
++PAIR	166069 To station name:To station name	To station name:To station name
+-PAIR	166069 From station name:From station name	From station name:From station name
+-PAIR	168070 To station name:To station name	From station id:From station id
+-PAIR	168070 To station name:To station name	To station id:To station id
+-PAIR	168070 To station name:To station name	To station name:To station name
