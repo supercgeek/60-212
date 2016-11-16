@@ -5,14 +5,14 @@ class flowImg {
   float yPosition;
 
   flowImg() {
-    c = color(20, 70, 44, 40);
-    xPosition = 50;
-    yPosition = 50;
+    c = color(20);
+    xPosition = -400;
+    yPosition = -250;
   }
 
   void render() {
     fill(c);
-    rect(xPosition, yPosition, 200, 200);
+    rect(xPosition, yPosition, 150, 150);
   }
 
   void move(float x, float y) {

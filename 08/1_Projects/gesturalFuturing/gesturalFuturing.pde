@@ -17,6 +17,7 @@ String grabVar = "Open";
 String leftOrRight = null;
 boolean isLeftOpen = false;
 boolean isRightOpen = false;
+
 flowImg mainImage;
 
 //name the oscP5 object
@@ -32,7 +33,7 @@ int listeningPort;
 void setup()
 {
   mainImage = new flowImg();
-
+  mainImage.render();
   background(250, 255, 255, 50);
   //if listening and sending are the same then messages will be sent back to this sketch
   listeningPort = 12345;
@@ -64,8 +65,20 @@ void oscEvent(OscMessage receivedMessage) {
     rightX = handRightXPos;
     rightY = handRightYPos;
     curTracked = tracked;
-    //println(curTracked);
-    //println(handLeftXPos, handLeftYPos, handRightXPos, handRightYPos);
+    println(curTracked);
+    //println(ha
+    //void drawHand(float leftX, float leftY, float rightX, float rightY) {
+    //  //println("Lft: "+ leftX + " " + leftY + "  Rft: " + rightX + " " + rightY);
+    //  //println("Lft: "+ leftX + " " + "  Rft: " + rightY);
+    //  leftX = map(leftX, -1, 1, 0, width/2);
+    //  rightX = map(rightX, -1, 1, 250, 500);
+    //  println("Lft: "+ leftX + " " + "  Rft: " + rightY);
+    //  fill(150);
+    //  stroke(150);
+    //  rect(50, 100, 50, 200);
+    //  rect(leftX, 250, 250, 250);
+    //}
+    //ndLeftXPos, handLeftYPos, handRightXPos, handRightYPos);
   }
   if (message[3].equals("hands")) {
     leftOrRight = message[4];
@@ -75,13 +88,15 @@ void oscEvent(OscMessage receivedMessage) {
 }
 
 void draw() {
+  mainImage.render();
   //background(250, 255, 255, 100);
   fill(255, 255, 255, 100);
+
   noStroke();
+  rect(0, 0, 500, 500);
   rect(0, 0, width, height);
 
   stroke(0);
-  mainImage.render();
 
   //println(tracked);
   if (tracked.equals("Tracked")) {
