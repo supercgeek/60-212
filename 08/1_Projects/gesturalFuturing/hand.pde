@@ -1,14 +1,34 @@
-///void drawHand(float leftX, float leftY, float rightX, float rightY) {
-//// // //println("Lft: "+ leftX + " " + leftY + "  Rft: " + rightX + " " + rightY);
-////  //println("Lft: "+ leftX + " " + "  Rft: " + rightY);
-////  leftX = map(leftX, -1, 1, 0, width/2);
-////  rightX = map(rightX, -1, 1, 250, 500);
-////  println("Lft: "+ leftX + " " + "  Rft: " + rightY);
-////  fill(150);
-////  stroke(150);
-////  rect(50, 100, 50, 200);
-////  rect(leftX, 250, 250, 250);
-////}
-//String curTracked; }
-  
-//}
+class hand { //class that allows the creation of any hand method
+
+  boolean closed;
+  float xPos;
+  float yPos;
+  color fillColor;
+  String trackingConfidence; //is either Tracked, Inferred, or (maybe something else)
+
+  hand() {
+    closed = false;
+    xPos = 200;
+    yPos = 200;
+    fillColor = color(200, 200, 200);
+  }
+
+  void updateXYC(float newXPos, float newYPos, String trackedState) { // a function to update x position, y position, and tracking confidence
+    xPos = map(newXPos, -1, 1, 0, width);
+    yPos = map(newYPos, 1, 0, 0, height);
+    trackingConfidence = trackedState;
+  }
+
+  void updateIsClosed(boolean openOrClose) {
+    if (openOrClose == true) {
+      fillColor = color(240, 240, 240);
+    } else { 
+      fillColor = color(200, 200, 200);
+    }
+  }
+
+  void render() {
+    fill(fillColor);
+    ellipse(xPos, yPos, 25, 25);
+  }
+}

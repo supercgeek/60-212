@@ -2,44 +2,30 @@
 import oscP5.*;
 import netP5.*;
 
-float handLeftXPos = 0;
-float handLeftYPos = 0;
-float handRightXPos = 0;
-float handRightYPos= 0;
+flowImg mainImage; //Constructor for Image
+hand leftHand; //the object that will contain all of the leftHand Data 
+hand rightHand; //the object that will contain all of the rightHand Data
+OscP5 oscP5; //name the oscP5 object
+NetAddress serverAddress; //name the addresses you'll send and receive @
 
-float leftX; 
-float leftY; 
-float rightX; 
-float rightY;
-String curTracked;
-String tracked = "Tracked";
-String grabVar = "Open";
-String leftOrRight = null;
-boolean isLeftOpen = false;
-boolean isRightOpen = false;
-
-flowImg mainImage;
-
-//name the oscP5 object
-OscP5 oscP5;
-
-//name the addresses you'll send and receive @
-NetAddress serverAddress; //THIS
-
-//server and client ports
-int listeningPort;
+int listeningPort; //server and client ports
 
 //now set the addresses, etc
 void setup()
 {
-  mainImage = new flowImg();
-  mainImage.render();
-  background(250, 255, 255, 50);
   //if listening and sending are the same then messages will be sent back to this sketch
   listeningPort = 12345;
-
   oscP5 = new OscP5(this, listeningPort);
+
   size(1200, 700);
+  background(250, 255, 255, 50);
+
+  // create image object 
+  mainImage = new flowImg();
+
+  // create hand objects
+  leftHand = new hand();
+  rightHand = new hand();
 }
 
 void oscEvent(OscMessage receivedMessage) {
@@ -50,102 +36,44 @@ void oscEvent(OscMessage receivedMessage) {
   if (message[3].equals("joints") && isHand == true) {
 
     if (message[4].equals("HandLeft")) {
-      handLeftXPos = receivedMessage.get(0).floatValue();
-      handLeftYPos = receivedMessage.get(1).floatValue();
-      tracked = receivedMessage.get(3).stringValue();
+      float handLeftXPos = receivedMessage.get(0).floatValue();
+      float handLeftYPos = receivedMessage.get(1).floatValue();
+      String tracked = receivedMessage.get(3).stringValue();
+
+      leftHand.updateXYC(handLeftXPos, handLeftYPos, tracked);
     }
     if (message[4].equals("HandRight")) {
-      handRightXPos = receivedMessage.get(0).floatValue();
-      handRightYPos = receivedMessage.get(1).floatValue();
-      tracked = receivedMessage.get(3).stringValue();
-    }
+      float handRightXPos = receivedMessage.get(0).floatValue();
+      float handRightYPos = receivedMessage.get(1).floatValue();
+      String tracked = receivedMessage.get(3).stringValue();
 
-    leftX = handLeftXPos;
-    leftY = handLeftYPos;
-    rightX = handRightXPos;
-    rightY = handRightYPos;
-    curTracked = tracked;
-    println(curTracked);
-    //println(ha
-    //void drawHand(float leftX, float leftY, float rightX, float rightY) {
-    //  //println("Lft: "+ leftX + " " + leftY + "  Rft: " + rightX + " " + rightY);
-    //  //println("Lft: "+ leftX + " " + "  Rft: " + rightY);
-    //  leftX = map(leftX, -1, 1, 0, width/2);
-    //  rightX = map(rightX, -1, 1, 250, 500);
-    //  println("Lft: "+ leftX + " " + "  Rft: " + rightY);
-    //  fill(150);
-    //  stroke(150);
-    //  rect(50, 100, 50, 200);
-    //  rect(leftX, 250, 250, 250);
-    //}
-    //ndLeftXPos, handLeftYPos, handRightXPos, handRightYPos);
+      rightHand.updateXYC(handRightXPos, handRightYPos, tracked);
+    }
   }
+  //ripping out all hand:closed data
   if (message[3].equals("hands")) {
-    leftOrRight = message[4];
-    grabVar = (receivedMessage.get(0).stringValue() + "/" + leftOrRight);
-    //println(grabVar);
+    String leftOrRight = message[4];
+    String grabVar = (receivedMessage.get(0).stringValue() + "/" + leftOrRight);
+
+    if (grabVar.contains("Left")) {//change something about left
+      if (grabVar.contains("Open")) {
+        leftHand.updateIsClosed(false);
+      } else {
+        leftHand.updateIsClosed(true);
+      }
+    }
+    if (grabVar.contains("Right")) {//change something about the right hand
+      if (grabVar.contains("Open")) {
+        rightHand.updateIsClosed(false);
+      } else {
+        rightHand.updateIsClosed(true);
+      }
+    }
   }
 }
-
 void draw() {
+  rect(0,0,width,height);
   mainImage.render();
-  //background(250, 255, 255, 100);
-  fill(255, 255, 255, 100);
-
-  noStroke();
-  rect(0, 0, 500, 500);
-  rect(0, 0, width, height);
-
-  stroke(0);
-
-  //println(tracked);
-  if (tracked.equals("Tracked")) {
-    //println("Lft: "+ leftX + " " + leftY + "  Rft: " + rightX + " " + rightY);
-    //println("Lft: "+ leftX + " " + "  Rft: " + rightY);
-
-    //left hand 
-    handCOl(grabVar);
-    leftX = map(leftX, -1, 1, 0, width);
-    leftY = map(leftY, 1, 0, 0, height);
-
-    ///right hand 
-    handCOl(grabVar);
-    rightX = map(rightX, -1, 1, 0, width);
-    rightY = map(rightY, 1, 0, 0, height);
-
-    ////println("Lft: "+ leftX + " " + "  Rft: " + rightY);
-
-    ////rect(50, 100, 50, 200);
-    //rect(leftX, height/2-250/2, 250, 250);//width/2, height/2, leftX, leftY);
-    ellipse(leftX, leftY, 25, 25);
-    ellipse(rightX, rightY, 25, 25);
-
-    //text(handLeftXPos, 50, 50, 50);
-    //text(width/2, height/2, leftX, rightY);
-  }
-}
-void handCOl(String grabVar) {
-  //println(grabVar);
-  //String[] colChange = grabVar.split("/");
-  //println("obj: " + colChange);
-  //println("colchange: "+ colChange[0] + colChange[1]);
-
-  if (grabVar.contains("Left")) {//change something about left
-    if (grabVar.contains("Open")) {
-      fill(255, 5, 230);
-    } else {
-      fill (0, 0, 0);
-      println("left closed");
-      mainImage.move(leftX, leftY);
-    }
-  }
-  if (grabVar.contains("Right")) {//change something about right
-    if ( grabVar.contains("Open")) {
-      fill(255, 5, 230);
-    } else {
-      fill (0, 0, 0);
-      println("right closed");
-      mainImage.move(rightX, rightY);
-    }
-  }
+  rightHand.render();
+  leftHand.render();
 }
