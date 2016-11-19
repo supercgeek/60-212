@@ -1,0 +1,1 @@
+This project/folder worked on with Adella Guo a.k.a. [Brodellaa](https://github.com/brodellaa).
