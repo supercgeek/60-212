@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<root>
+   <item>
+    <name>App Switch Right</name>
+    <identifier>private.ssr</identifier>
+    <autogen>
+
+    __KeyToKey__
+    KeyCode::CURSOR_RIGHT,    
+    KeyCode::TAB, ModifierFlag::COMMAND_L
+
+    </autogen>
+    <autogen>
+
+    __KeyToKey__
+    KeyCode::TAB, ModifierFlag::COMMAND_L,                                                      
+    KeyCode::CURSOR_RIGHT
+
+    </autogen>
+    </item>
+    <item>
+    <name>App Switch Left</name>
+    <identifier>private.ssl</identifier>
+    <autogen>
+
+    __KeyToKey__
+    KeyCode::CURSOR_LEFT,    
+    KeyCode::TAB, ModifierFlag::COMMAND_L,ModifierFlag::SHIFT_L
+
+    </autogen>
+    <autogen>
+
+    __KeyToKey__
+    KeyCode::TAB, ModifierFlag::COMMAND_L,ModifierFlag::SHIFT_L,                                                     
+    KeyCode::CURSOR_LEFT
+
+    </autogen>
+  </item>
+</root>
